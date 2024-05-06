@@ -1,0 +1,27 @@
+<div>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Edit Task</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="editForm" (ngSubmit)="saveChanges()">
+            <div class="mb-3">
+                <label for="title" class="form-label">Task Name</label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['title'].errors }"
+                    id="title" formControlName="title">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Task Description</label>
+                <textarea class="form-control" id="description" formControlName="description" rows="3"></textarea>
+            </div>
+            <div>
+                <app-task-status-select [formControl]="$any(editForm).controls['status']"
+                    ngDefaultControl></app-task-status-select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Close click')">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

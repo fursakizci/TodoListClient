@@ -1,0 +1,28 @@
+<div class="card mb-3">
+  <div class="mb-2">
+    <div class="d-flex justify-content-between align-items-center">
+      <button (click)="deleteTask(task.id)" class="btn delete-icon position-absolute top-0 end-0 mb-2 me-2">
+        <i class="bi bi-trash"></i> <!-- delete icon-->
+      </button>
+      <button (click)="openEditModal(task)" class="btn edit-icon position-absolute top-0 end-0 mb-2 me-5">
+        <i class="bi bi-pencil"></i> <!-- edit icon -->
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <h5 class="card-title">{{ task.title }}</h5>
+        <p class="card-text">{{ task.description }}</p>
+      </div>
+      <span class="badge rounded-pill" [ngClass]="{
+                'bg-primary': task.status === TaskStatus.Open,
+                'bg-warning': task.status === TaskStatus.InProgress,
+                'bg-success': task.status === TaskStatus.Done
+              }">{{ task.status }}</span>
+    </div>
+    <div class="text-muted text-end">
+      {{ task.createdDate | date }}
+    </div>
+  </div>
+</div>
