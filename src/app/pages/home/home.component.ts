@@ -31,6 +31,7 @@ export class HomeComponent {
     this.todoService.getAllTasks().subscribe({
       next: (response) => {
         this.tasks = response;
+        
         this.changeTab(this.selectedTab);
       }
     });
