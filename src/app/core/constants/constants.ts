@@ -1,4 +1,4 @@
-const apiurl = 'http://localhost:5157/api';
+const apiurl = 'http://54.153.142.5:8080/api';
 
 export const apiEndpoint = {
 
