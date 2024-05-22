@@ -1,4 +1,4 @@
-const apiurl = 'http://54.153.142.5:8080/api';
+const apiurl = 'http://3.27.88.228:8080/api';
 
 export const apiEndpoint = {
 
