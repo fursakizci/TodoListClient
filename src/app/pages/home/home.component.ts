@@ -25,15 +25,17 @@ export class HomeComponent {
     private modalService: NgbModal, 
     private todoService: TodoService,
     private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute) { }
+  
+  ngOnInit(){
     this.getAllTask();
-
   }
 
 
   public getAllTask() {
     this.todoService.getAllTasks().subscribe({
       next: (response) => {
+        console.log(response);
         this.tasks = response;
         this.changeTab(this.selectedTab);
       }

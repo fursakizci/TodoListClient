@@ -17,8 +17,8 @@ export class TodoService {
   }
 
   getAllTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>(
-      `${apiEndpoint.TodoEndpoint.getAllTodo}`);
+    return this.http.get<Task[]>
+    (`${apiEndpoint.TodoEndpoint.getAllTodo}`);
   }
 
   getAllTasksByStatus(status: TaskStatus): Observable<Task[]> {
