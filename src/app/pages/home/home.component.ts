@@ -5,6 +5,7 @@ import { AddTaskModalComponent } from '../../components/add-task-modal/add-task-
 import { TabName, Task, TaskStatus } from '../../core/models/Task';
 import { TodoService } from '../../core/services/todo-service.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -20,18 +21,27 @@ export class HomeComponent {
   tasks: Task[] = [];
   filteredTasks: Task[] = this.tasks;
 
-  constructor(private modalService: NgbModal, private todoService: TodoService) {
+  constructor(
+    private modalService: NgbModal, 
+    private todoService: TodoService,
+    private router: Router,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.getAllTask();
+
+    this.route.params.subscribe(params => {
+      if (params['reload']) {
+        this.getAllTask();
+      }
+    });
   }
 
   public getAllTask() {
     this.todoService.getAllTasks().subscribe({
       next: (response) => {
         this.tasks = response;
-        
         this.changeTab(this.selectedTab);
       }
     });
