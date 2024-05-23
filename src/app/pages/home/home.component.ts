@@ -26,17 +26,10 @@ export class HomeComponent {
     private todoService: TodoService,
     private router: Router,
     private route: ActivatedRoute) {
-  }
-
-  ngOnInit(): void {
     this.getAllTask();
 
-    this.route.params.subscribe(params => {
-      if (params['reload']) {
-        this.getAllTask();
-      }
-    });
   }
+
 
   public getAllTask() {
     this.todoService.getAllTasks().subscribe({
